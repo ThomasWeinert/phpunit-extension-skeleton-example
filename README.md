@@ -1,58 +1,70 @@
 # PHPUnit Extension Skeleton Example
 
 This a small example for a [PHPUnit](https://phpunit.de/) extension using the 
-[skeleton]().
+[skeleton](https://github.com/ThomasWeinert/phpunit-extension-skeleton).
 
 ## Requirements
 
 * [Composer](https://getcomposer.org/)
 * [Phive](https://phar.io/)
 
-## Build Targets
+## Setup
 
-The repository includes a [Phing](https://www.phing.info/) build file. Phive installs
-Phing and the other tools into the `tools/` subdirectory. 
-
-### build
+After checkout you will need to install the tools and dependencies. Phive is used for the 
+tools and Composer for the dependencies.
 
 ```
-$ tools/phing build
+phive install
+composer install
 ```
 
-Create a Phar package for the extension.
+A Phing build file is included. More information about the targets can be found on
+the [skeleton repository page](https://github.com/ThomasWeinert/phpunit-extension-skeleton).
 
-### clean
+## HelloWorld
 
-```
-$ tools/phing clean
-```
+The repository implements a Constraint class and two traits that can be used to add the
+functions to you test case.
 
-Delete build artifacts.
+### Assertion
 
-### package
-
-```
-$ tools/phing package
-```
-
-Create a Phar package for the extension and sign it using GPG.
-
-### reformat
-
-```
-$ tools/phing reformat
+```php
+class ExampleTestCase extends \PHPUnit\Framework\TestCase 
+{
+    use \ThomasWeinert\PHPUnitExtensionExample\Assert;
+     
+    public function testStringMatchesHelloWorld() {
+        $this->assertHelloWorld('Hello World!');
+    }
+}
 ```
 
-Uses the [PHP Coding Standards Fixer](https://cs.sensiolabs.org/) to reformat the 
-source code according the PHPUnit coding standard. 
+### Constraint
 
-### test
+```php
+class ExampleTestCase extends \PHPUnit\Framework\TestCase 
+{
+    use \ThomasWeinert\PHPUnitExtensionExample\Contraint;
+     
+    public function testStringMatchesHelloWorld() {
+        $this->assertThat('Hello World!', $this->equalsHelloWorld());
+    }
+     
+    public function testAssertMethodCalledWithHelloWorld():void
+    {
+        $mock = $this
+            ->getMockBuilder(\stdClass::class)
+            ->setMethods(['greet'])
+            ->getMock();
+        $mock
+            ->expects($this->once())
+            ->method('greet')
+            ->with($this->equalsHelloWorld());
 
+        $mock->greet('Hello World!');
+    }
+}
 ```
-$ tools/phing test
-```
-
-Run unit tests.
 
 
 
