@@ -15,6 +15,6 @@ class AssertTest extends TestCase
 
     public function testAssertHelloWorldExpectingSuccess(): void
     {
-        self::assertHelloWorld('Hello World!');
+        $this->assertHelloWorld('Hello World!');
     }
 }

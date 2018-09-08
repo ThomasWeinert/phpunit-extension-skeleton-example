@@ -15,7 +15,7 @@ class ConstraintTest extends TestCase
 
     public function testAssertHelloWorldExpectingSuccess(): void
     {
-        self::assertThat('Hello World!', self::equalsHelloWorld());
+        $this->assertThat('Hello World!', $this->equalsHelloWorld());
     }
 
     public function testAssertMethodCalledWithHelloWorld():void
