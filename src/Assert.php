@@ -4,8 +4,8 @@ namespace ThomasWeinert\PHPUnitExtensionExample;
 
 trait Assert
 {
-    public static function assertHelloWorld(string $actual): void
+    public static function assertHelloWorld(string $actual, string $message = ''): void
     {
-        self::assertEquals('Hello World!', $actual);
+        static::assertThat($actual, new Constraint\HelloWorld(), $message);
     }
 }

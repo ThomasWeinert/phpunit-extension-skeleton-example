@@ -1,6 +1,6 @@
 # PHPUnit Extension Skeleton Example
 
-This a minimum example for a [PHPUnit](https://phpunit.de/) extension using the 
+This a small example for a [PHPUnit](https://phpunit.de/) extension using the 
 [skeleton]().
 
 ## Requirements

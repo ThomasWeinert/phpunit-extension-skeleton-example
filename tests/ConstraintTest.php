@@ -5,16 +5,16 @@ namespace ThomasWeinert\PHPUnitExtensionExample;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \ThomasWeinert\PHPUnitExtensionExample\Assert
+ * @covers \ThomasWeinert\PHPUnitExtensionExample\Constraint
  *
  * @uses \ThomasWeinert\PHPUnitExtensionExample\Constraint\HelloWorld
  */
-class AssertTest extends TestCase
+class ConstraintTest extends TestCase
 {
-    use Assert;
+    use Constraint;
 
     public function testAssertHelloWorldExpectingSuccess(): void
     {
-        self::assertHelloWorld('Hello World!');
+        self::assertThat('Hello World!', self::equalsHelloWorld());
     }
 }
