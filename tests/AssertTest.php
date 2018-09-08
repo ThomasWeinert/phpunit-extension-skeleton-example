@@ -7,11 +7,12 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \ThomasWeinert\PHPUnitExtensionExample\Assert
  */
-class AssertTest extends TestCase {
-
+class AssertTest extends TestCase
+{
     use Assert;
 
-    public function testAssertHelloWorldExpectingSuccess(): void {
+    public function testAssertHelloWorldExpectingSuccess(): void
+    {
         self::assertHelloWorld('Hello World!');
     }
 }
