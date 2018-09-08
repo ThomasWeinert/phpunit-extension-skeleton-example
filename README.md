@@ -8,26 +8,6 @@ This a minimum example for a [PHPUnit](https://phpunit.de/) extension using the
 * [Composer](https://getcomposer.org/)
 * [Phive](https://phar.io/)
 
-## Usage
-
-Use [Composer](https://getcomposer.org/) to create a new extension project from this skeleton. 
-
-```
-$ composer create-project thomasweinert/phpunit-extension-skeleton your-awesome-extension
-```
-
-Go into the new project directory.
-
-```
-$ cd your-awesome-extension
-```
-
-Install tools used to build and package your extension using Phive.
-
-```
-$ phive install
-```
-
 ## Build Targets
 
 The repository includes a [Phing](https://www.phing.info/) build file. Phive installs
